@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Juego {
+            name = "Juego POO";
+            jugadores = [];
+
+            crearJugadores() {
+                for (let i = 0; i < 2; i++) {
+                    let nameAux = prompt(`Ingrese el nombre del jugador ${i + 1}`);
+                    let balanceAux = Math.round(Math.random() * 100);
+                    let activeAux = confirm("El jugador està activo?");
+                    let jugadorAux = new Jugador(nameAux, balanceAux, activeAux, 4);
+                    this.jugadores.push(jugadorAux);
+                }
+            }
+        }
+
+        class Fichas {
+            constructor(n) {
+                this.quantity = n;
+            }
+        }
+        class Jugador {
+            name = "";
+            balance = 0;
+            active = false;
+            fichas = new Fichas(4);
+            constructor(nombre, saldo, status, tokens) {
+                this.name = nombre;
+                this.balance = saldo;
+                this.active = status;
+                this.fichas = new Fichas(tokens)
+            }
+        }
+        window.addEventListener("load", function () {
+            let juego = new Juego();
+            juego.crearJugadores();
+            console.log(juego);
+        })
+    </script>
+</body>
+
+</html>
